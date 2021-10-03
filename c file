@@ -1,0 +1,35 @@
+#include <mysql.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+int main(int argc, char **argv)
+{
+	MYSQL *conn;
+	int err;
+	MYSQL_RES *resultado;
+	MYSQL_ROW row;
+	conn = mysql_init(NULL);
+	if (conn==NULL) {
+		printf ("Error al crear la conexion: %u %s\n", mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	conn = mysql_real_connect (conn, "localhost","root", "mysql", "Juego",0, NULL, 0);
+	if (conn==NULL) {
+		printf ("Error al inicializar la conexion: %u %s\n", mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	//cuantas veces se han enfrentado dos personas
+  //no se como hacer para coger un nombre desde pantalla y ver cuantas veces tuvo una partida contra otro jugador dado por pantalla
+	char nombre[20];
+	printf ("Dame el nombre de un jugador\n"); 
+	scanf ("%s", nombre);
+  char nombre2[20];
+  printf ("Dame el nombre de otro jugador\n"); 
+  scanf("%s",nombre2);
+	
+	char consulta [80];
+
+		
+		mysql_close (conn);
+		exit(0);
+}
